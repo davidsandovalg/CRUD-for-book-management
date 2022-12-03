@@ -8,7 +8,7 @@ Once our environment is configured, we must clone this project, url for cloning:
 
 <strong>URL to clone:</strong> <span>https://github.com/davidsandovalg/test_ingenuity_and_solutions.git</span>
 
-<strong>Resource:</strong> <a href="https://fofxacademy.com/how-to-setup-laragon-as-a-web-development-environment/" target="_blank">Cloning a repository</a>
+<strong>Resource:</strong> <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository" target="_blank">Cloning a repository</a>
 
 Once the repository is cloned, we look for a file in our main branch called .env.example and for this case we rename the file to .env, where the configuration of this project is located.
 
@@ -30,7 +30,7 @@ At this point, our application should already be working correctly.
 
 ## You can also enter the test web server published on free hosting
 
-<strong>Project URL:</strong> <a href="https://fofxacademy.com/how-to-setup-laragon-as-a-web-development-environment/" target="_blank">See web project</a>
+<strong>Project URL:</strong> <a href="https://davidfernandosandovalgomez.icu/" target="_blank">See web project</a>
 
 ## Learning Laravel
 
