@@ -1,0 +1,91 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Icons
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.titles-and-button {
+	display: grid;
+	grid-template-columns: 0.1fr 0.1fr auto;
+	align-items: center;
+	margin-bottom: 20px;
+	gap: 10px;
+}
+
+.icons-and-titles {
+	display: grid;
+	grid-template-columns: 0.02fr auto;
+	align-items: center;
+	margin-bottom: 20px;
+	gap: 10px;
+}
+
+.titles-and-button > h1,
+.icons-and-titles > h1 {
+	margin-bottom: 0;
+}
+
+.search-value {
+	font-weight: bold;
+	font-style: italic;
+}
+
+.form-search {
+	height: 68%;
+}
+
+.alert-no-result-found {
+	font-size: 16px;
+}
+
+.invalid-feeback,
+.is-invalid {
+	color: red;
+}
+
+.alert-errors-partials {
+	font-size: 16px;
+	list-style: none
+}
+
+.alert-containers {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.delete-book-modal,
+.delete-book-modal-title {
+	font-size: 18px;
+	text-align: center;
+}
+
+.delete-book-modal > span {
+	font-weight: bold;
+	font-style: italic;
+}
+
+.main-footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: white;
+	color: black;
+	text-align: center;
+	height: 40px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	box-shadow: 0.125rem 0 0.25rem rgba(0, 0, 0, 0.075)
+}
+
+.main-footer > a {
+	color: black;
+	text-decoration: none;
+}
+
