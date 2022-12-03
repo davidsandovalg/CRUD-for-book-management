@@ -18,12 +18,10 @@ class BooksController extends Controller
     {
       if ($request) {
         $query = trim(request('search_data'));
-        $allBooks = DB::table('books')
-                        ->join('users', 'books.user_id', '=', 'users.id')
-                        ->whereRaw('books.title LIKE "%'.$query.'%" OR books.isbn LIKE "%'.$query.'%" OR books.year_publication LIKE "%'.$query.'%" OR users.name LIKE "%'.$query.'%" OR CAST(books.created_at AS CHAR) LIKE "%'.$query.'%"')
-                        ->where('books.canceled', '=', '0')
-                        ->orderBy('books.title', 'asc')
-                        ->select(['books.id', 'books.title', 'books.isbn', 'books.year_publication', 'users.name', 'books.created_at'])
+        $allBooks = DB::table('view_user_created_books')
+                        ->whereRaw('view_user_created_books.title LIKE "%'.$query.'%" OR view_user_created_books.isbn LIKE "%'.$query.'%" OR view_user_created_books.year_publication LIKE "%'.$query.'%" OR view_user_created_books.name LIKE "%'.$query.'%" OR CAST(view_user_created_books.created_at AS CHAR) LIKE "%'.$query.'%"')
+                        ->orderBy('view_user_created_books.title', 'asc')
+                        ->select(['view_user_created_books.id', 'view_user_created_books.title', 'view_user_created_books.isbn', 'view_user_created_books.year_publication', 'view_user_created_books.name', 'view_user_created_books.created_at'])
                         ->paginate(10);
 
         return view('project.books', ["allBooks" => $allBooks, "search_data" => $query]);

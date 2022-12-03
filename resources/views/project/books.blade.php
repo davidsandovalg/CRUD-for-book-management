@@ -24,23 +24,18 @@
                         <caption></caption>
                         <thead>
                             <tr>
-                                {{-- <th>id</th> --}}
-                                <th style="width: 280px;">Title</th>
+                                <th style="width: 300px;">Title</th>
                                 <th>ISBN</th>
                                 <th>Year Publication</th>
                                 <th>User Created</th>
                                 <th>Creation Date</th>
-                                <th>Export</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($allBooks as $books)
                                 <tr>
-                                    {{-- <td>
-                                        {{ $books->id }}
-                                    </td> --}}
-                                    <td style="width: 280px;">
+                                    <td style="width: 300px;">
                                         {{ $books->title }}
                                     </td>
                                     <td>
@@ -54,12 +49,6 @@
                                     </td>
                                     <td>
                                         {{ date('m/d/y', strtotime($books->created_at)) }}
-                                    </td>
-                                    <td>
-                                        <div class="d-grid gap-2 d-md-block">
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-file-pdf"></i></button>
-                                            <button class="btn btn-success btn-sm"><i class="fas fa-file-excel"></i></button>
-                                        </div>
                                     </td>
                                     <td>
                                         <div class="d-grid gap-2 d-md-block">
