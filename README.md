@@ -30,7 +30,7 @@ At this point, our application should already be working correctly.
 
 ## You can also enter the test web server published on free hosting
 
-<strong>Project URL:</strong> <a href="https://fofxacademy.com/how-to-setup-laragon-as-a-web-development-environment/" target="_blank">See web project</a>
+<strong>Project URL:</strong> <a href="https://davidfernandosandovalgomez.icu/" target="_blank">See web project</a>
 
 ## Learning Laravel
 
