@@ -1,47 +1,113 @@
-## Instructions and requirements to run the test locally
+# CRUD for Book Management
 
-To run the test locally, the first thing to keep in mind is that Laravel is a framework for PHP, so you must have a local web server such as Laragon, XAMPP, WAMPP, Vagrant and Laravel Homestead.
+A Laravel-based web application for authenticated book catalog management with search, pagination, and soft-delete behavior.  
+**Built in:** 2022
 
-<strong>Resource:</strong> <a href="https://fofxacademy.com/how-to-setup-laragon-as-a-web-development-environment/" target="_blank">Laragon environment configuration</a>
+## Tech Stack
 
-Once our environment is configured, we must clone this project, url for cloning:
+| Area | Technology |
+| --- | --- |
+| Language | PHP 7.2.5+ / 8.0, JavaScript |
+| Backend Framework | Laravel 7 |
+| Frontend | Blade, Bootstrap 4, Vue 2, Laravel Mix |
+| Database | MySQL (configured via `.env`) |
+| Dev / Build Tools | Composer, NPM, Webpack (Laravel Mix), PHPUnit |
 
-<strong>URL to clone:</strong> <span>https://github.com/davidsandovalg/test_ingenuity_and_solutions.git</span>
+## Architecture
 
-<strong>Resource:</strong> <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository" target="_blank">Cloning a repository</a>
+The project follows a classic Laravel MVC structure: routes define HTTP entry points, controllers encapsulate request handling and validation, Eloquent models map domain entities (`Books`, `User`), and Blade views render server-side UI. The data layer also includes a SQL view (`view_user_created_books`) to simplify book listing queries joined with user names.
 
-Once the repository is cloned, we look for a file in our main branch called .env.example and for this case we rename the file to .env, where the configuration of this project is located.
+## Key Features
 
-Now that we have our .env file renamed, we continue with the execution of the following commands through our console/terminal, being in the main root of this project:
+- User authentication with registration/login scaffolding.
+- Custom validation rules for registration (letters-only names and password uppercase requirement).
+- Book CRUD operations (create, read, update, logical delete using `canceled` flag).
+- Auto-generated ISBN for new books.
+- Search across title, ISBN, publication year, creator name, and creation date.
+- Paginated book listing.
+- Database seeders for sample users and books.
 
-<strong>Step 1:</strong> Command that creates the database structure
-<code>php artisan migrate</code>
+## Prerequisites
 
-<strong>Step 2:</strong> Command that automatically generates information in our database
-<code>php artisan db:seed --class=DatabaseSeeder</code>
+- PHP `^7.2.5` or `^8.0`
+- Composer (latest stable recommended)
+- MySQL 5.7+ or compatible
+- Node.js + NPM (for frontend asset compilation)
 
-<strong>Step 3:</strong> Command to launch the server of a project/application, this would be running from the root of our app, remember that you must change the ip address to that of your machine and if you have position 80 occupied you can also change it to 3000, 8080, 8082 , etc.
-<code>php artisan serve --host 192.168.0.200 --port 80</code>
+## Installation & Setup
 
-<strong>Step 4:</strong> We enter our preferred web browser, click on the navigation bar and write the ip address that we assigned in step 3, if you changed port 80 for another, you must write it as follows:
-<code>192.168.0.200:3000</code>
+1. Clone the repository:
+   ```bash
+   git clone <your-repository-url>
+   cd CRUD-for-book-management
+   ```
 
-At this point, our application should already be working correctly.
+2. Install backend dependencies:
+   ```bash
+   composer install
+   ```
 
-## You can also enter the test web server published on free hosting
+3. Install frontend dependencies:
+   ```bash
+   npm install
+   ```
 
-<strong>Project URL:</strong> <a href="https://davidfernandosandovalgomez.icu/" target="_blank">See web project</a>
+4. Configure environment variables:
+   ```bash
+   cp .env.example .env
+   ```
+   Update DB credentials in `.env` (`DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`).
 
-## Learning Laravel
+5. Generate application key (if needed):
+   ```bash
+   php artisan key:generate
+   ```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+6. Run migrations and seeders:
+   ```bash
+   php artisan migrate
+   php artisan db:seed --class=DatabaseSeeder
+   ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+7. Build frontend assets:
+   ```bash
+   npm run dev
+   ```
 
-## Laravel Sponsors
+## Usage
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- Run local development server:
+  ```bash
+  php artisan serve
+  ```
 
-## License
+- Run automated tests:
+  ```bash
+  php artisan test
+  ```
+  or
+  ```bash
+  vendor/bin/phpunit
+  ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Build production assets:
+  ```bash
+  npm run prod
+  ```
+
+## Folder Structure
+
+```text
+app/
+  Http/Controllers/     # Request handling and business flow
+  Rules/                # Custom validation rules
+  Books.php             # Book model
+config/                 # Framework and service configuration
+database/
+  migrations/           # Schema + SQL view creation
+  seeds/                # Sample data seeders
+resources/
+  views/                # Blade templates (auth + books UI)
+routes/
+  web.php               # Web routes for auth and books CRUD
+tests/                  # Unit and feature test scaffolding
